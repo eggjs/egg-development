@@ -1,6 +1,6 @@
 {
   "name": "egg-development",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "development tool for egg",
   "eggPlugin": {
     "name": "development",
@@ -18,7 +18,7 @@
   "dependencies": {},
   "devDependencies": {
     "autod": "2",
-    "egg": "0.0.3",
+    "egg": "0.0.5",
     "egg-bin": "1",
     "egg-ci": "1",
     "egg-mock": "0.0.1",

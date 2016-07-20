@@ -20,8 +20,6 @@
 [download-image]: https://img.shields.io/npm/dm/egg-development.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-development
 
-这是针对 egg 本地开发环境特定功能的插件，此插件默认在开发环境启用，其他环境关闭。
-
 This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
 
 ## feature
