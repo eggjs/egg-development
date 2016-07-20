@@ -20,9 +20,16 @@
 [download-image]: https://img.shields.io/npm/dm/egg-development.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-development
 
-<!--
-Description here.
--->
+这是针对 egg 本地开发环境特定功能的插件，此插件默认在开发环境启用，其他环境关闭。
+
+This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
+
+## feature
+
+- Under development environment, Output request log in STDOUT, statistic and output all key parts time-consuming;
+- Watch file changes, and reload application；
+
+
 
 ## Install
 
@@ -32,9 +39,29 @@ $ npm i egg-development
 
 ## Usage
 
-<!--
-Usage, configuration and example here.
--->
+
+```js
+// config/config.js
+exports.development = {
+  watchDirs: [], // dirs needed watch, when files under these change, application will reload.
+  ignoreDirs: [], // dirs don't need watch, including subdirectories
+};
+```
+
+## About Reload
+
+Under the following directory (including subdirectories) will watch file changes under development environment by default, trigger an Egg development environment server reload:
+
+- $project/app
+- $project/config
+- $project/mocks
+- $project/mocks_proxy
+
+Under the following directory (including subdirectories) will ignore file changes under development environment by default:
+
+- $project/app/views
+- $project/app/assets
+
 
 ## Questions & Suggestions
 
