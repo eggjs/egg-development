@@ -27,8 +27,6 @@ This is an egg plugin for local development, under development environment enabl
 - Under development environment, Output request log in STDOUT, statistic and output all key parts time-consuming;
 - Watch file changes, and reload application；
 
-
-
 ## Install
 
 ```bash

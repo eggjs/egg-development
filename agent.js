@@ -1,15 +1,7 @@
-/**!
- * 本地调试文件监听
- *
- * Copyright(c) Alibaba Group Holding Limited.
- *
- * Authors:
- *   贯高 <guangao@alipay.com>
- */
-
 'use strict';
 
 const path = require('path');
+const debounce = require('debounce');
 
 module.exports = function(agent) {
   const logger = agent.logger;
@@ -29,45 +21,38 @@ module.exports = function(agent) {
     'app/public',
   ].concat(config.ignoreDirs).map(dir => path.join(baseDir, dir));
 
-  // 开发模式下监听 App 的几个主要的代码目录
-  // 监听目录变化，重启 worker 进程
-  agent.watcher.watch(watchDirs, reloadWorker);
+  // watch dirs to reload worker, will debounce 200ms
+  agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
 
-  /*
-    文件改变，发送重启 worker 的动作
-    Worker reload 流程
-
-    [AgentWorker] - on file change
-      |-> emit reload-worker
-
-    [Master] - receive reload-worker event
-      |-> TODO: Mark worker will die
-      |-> Fork new worker
-        |-> kill old worker
-  */
+  /**
+   * reload app worker:
+   *   [AgentWorker] - on file change
+   *    |-> emit reload-worker
+   *   [Master] - receive reload-worker event
+   *    |-> TODO: Mark worker will die
+   *    |-> Fork new worker
+   *      |-> kill old worker
+   *
+   * @param {Object} info - changed fileInfo
+   */
   function reloadWorker(info) {
-    // egg-bin debug 不 reload
+    // don't reload at `egg-bin debug`
     if (process.env.EGG_DEBUG) {
       return;
     }
 
-    // 监控是否服务端 js 变化了，是的话重启 worker
-    // 过滤静态文件变化
     if (isAssetsDir(info.path) || !info.isFile) {
       return;
     }
 
     logger.warn(`[agent:development] reload worker because ${info.path} ${info.event}`);
-    // egg@1.x 的消息模型
-    agent.messenger.broadcast('reload-worker');
-    // egg@2.x 的消息模型
+
     process.send({
       to: 'master',
       action: 'reload-worker',
     });
   }
 
-  // 检测是否是排除 reload 的文件路径
   function isAssetsDir(path) {
     for (const ignorePath of ignoreReloadFileDirs) {
       if (path.startsWith(ignorePath)) {
