@@ -1,15 +1,4 @@
-/**!
- * Copyright(c) Alibaba Group Holding Limited.
- *
- * Authors:
- *   苏千 <suqian.yf@alipay.com> (http://fengmk2.com)
- */
-
 'use strict';
-
-/**
- * Module dependencies.
- */
 
 const request = require('supertest');
 const pedding = require('pedding');
@@ -21,10 +10,12 @@ const assert = require('assert');
 let app;
 
 const logpath = path.join(__dirname, 'fixtures/development/logs/development/development-web.log');
+const logpath_agent = path.join(__dirname, 'fixtures/development/logs/development/egg-agent.log');
 
 describe('test/development.test.js', () => {
   before(done => {
     rimraf.sync(logpath);
+    rimraf.sync(logpath_agent);
     mm(process.env, 'NODE_ENV', 'development');
     mm(process.env, 'EGG_LOG', 'none');
     app = mm.app({
@@ -76,5 +67,21 @@ describe('test/development.test.js', () => {
     request(app.callback())
     .get('/__koa_mock_scene_toolbox/hello')
     .expect(404, done);
+  });
+
+  it('should reload once when 2 file change as same time', done => {
+    const filepath = path.join(__dirname, 'fixtures/development/app/service/c.js');
+    const filepath1 = path.join(__dirname, 'fixtures/development/app/service/d.js');
+    fs.writeFileSync(filepath, '');
+    fs.writeFileSync(filepath1, '');
+
+    setTimeout(() => {
+      const content = fs.readFileSync(logpath_agent, 'utf8').trim();
+      assert.equal(content.split('reload worker').length, 2);
+
+      fs.unlinkSync(filepath);
+      fs.unlinkSync(filepath1);
+      done();
+    }, 1000);
   });
 });
