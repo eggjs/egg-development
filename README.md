@@ -22,7 +22,7 @@
 
 This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
 
-## feature
+## Features
 
 - Under development environment, Output request log in STDOUT, statistic and output all key parts time-consuming;
 - Watch file changes, and reload application；
@@ -34,7 +34,6 @@ $ npm i egg-development
 ```
 
 ## Usage
-
 
 ```js
 // config/config.js
