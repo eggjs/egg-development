@@ -2,9 +2,7 @@
 
 const path = require('path');
 
-/**
- * ignore assets http request log at local development mode
- */
+// ignore assets http request log at local development mode
 const excludeRequestLogExts = [ '.js', '.css', '.png', '.svg', '.gif', '.jpg', '.ico' ];
 const assetsPrefix = /^\/(assets\/|public\/|__koa_mock_scene_toolbox)/;
 

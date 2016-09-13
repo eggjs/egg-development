@@ -1,15 +1,4 @@
-/**!
- * Copyright(c) Alibaba Group Holding Limited.
- *
- * Authors:
- *   苏千 <suqian.yf@alipay.com> (http://fengmk2.com)
- */
-
 'use strict';
-
-/**
- * Module dependencies.
- */
 
 const mm = require('egg-mock');
 const fs = require('fs');
