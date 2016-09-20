@@ -41,7 +41,7 @@ module.exports = function(agent) {
       return;
     }
 
-    if (isAssetsDir(info.path) || !info.isFile) {
+    if (isAssetsDir(info.path) || !(info.isFile || info.remove)) {
       return;
     }
 
