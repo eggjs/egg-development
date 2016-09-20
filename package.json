@@ -1,6 +1,6 @@
 {
   "name": "egg-development",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "development tool for egg",
   "eggPlugin": {
     "name": "development",
