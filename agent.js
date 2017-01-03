@@ -3,7 +3,7 @@
 const path = require('path');
 const debounce = require('debounce');
 
-module.exports = function(agent) {
+module.exports = agent => {
   const logger = agent.logger;
   const baseDir = agent.config.baseDir;
   const config = agent.config.development;

@@ -21,14 +21,14 @@
 - 开发环境的请求日志在 STDOUT 输出，并统计各个关键部位耗时并输出；
 - 监视应用文件变动，实现 Reload 重新加载新的代码；
 
-
 ### 配置
 
 ```js
-// config/config.js
+// config/config.local.js
 exports.development = {
   watchDirs: [], // 指定监视的目录（包括子目录），当目录下的文件变化的时候自动重载应用，路径从项目根目录开始写
   ignoreDirs: [], // 指定过滤的目录（包括子目录）
+  fastReady: true, // 启动后马上 ready
 };
 ```
 
