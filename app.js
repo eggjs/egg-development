@@ -1,8 +1,8 @@
 'use strict';
 
-module.exports = function(app) {
+module.exports = app => {
   app.config.coreMiddleware.unshift('development');
 
   // don't need to wait at local development mode
-  process.nextTick(() => app.ready(true));
+  if (app.config.development.fastReady) process.nextTick(() => app.ready(true));
 };

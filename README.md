@@ -36,10 +36,11 @@ $ npm i egg-development
 ## Usage
 
 ```js
-// config/config.js
+// config/config.local.js
 exports.development = {
   watchDirs: [], // dirs needed watch, when files under these change, application will reload.
   ignoreDirs: [], // dirs don't need watch, including subdirectories
+  fastReady: true, // don't wait all plugins ready
 };
 ```
 
