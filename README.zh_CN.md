@@ -37,7 +37,7 @@ exports.development = {
 
 ### 关于 Reload
 
-默认以下目录（包括下级的子目录）将会被监视文件变动，触发 Egg 开发环境服务器重新载入：
+默认以下目录（包括下级的子目录）将会被监视文件变动，触发 egg 开发环境服务器重新载入：
 
 - $project/app
 - $project/config
@@ -46,7 +46,7 @@ exports.development = {
 
 默认以下目录（包括下级的子目录）将会被过滤：
 
-- $project/app/views
+- $project/app/view
 - $project/app/assets
 
 ## 提问交流

@@ -25,7 +25,7 @@ This is an egg plugin for local development, under development environment enabl
 ## Usage
 
 ```js
-// {app_root}/config/plugin.js
+// config/plugin.js
 exports.development = {
   enable: true,
   package: 'egg-development',
@@ -52,9 +52,8 @@ Under the following directory (including subdirectories) will watch file changes
 
 Under the following directory (including subdirectories) will ignore file changes under development environment by default:
 
-- $project/app/views
+- $project/app/view
 - $project/app/assets
-
 
 ## Questions & Suggestions
 
