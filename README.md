@@ -22,29 +22,26 @@
 
 This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
 
+## Usage
+
+```js
+// {app_root}/config/plugin.js
+exports.development = {
+  enable: true,
+  package: 'egg-development',
+};
+```
+
+## Configuration
+
+see [config/config.default.js](https://github.com/eggjs/egg-development/blob/master/config/config.default.js) for more detail.
+
 ## Features
 
 - Under development environment, Output request log in STDOUT, statistic and output all key parts time-consuming;
 - Watch file changes, and reload application；
 
-## Install
-
-```bash
-$ npm i egg-development
-```
-
-## Usage
-
-```js
-// config/config.local.js
-exports.development = {
-  watchDirs: [], // dirs needed watch, when files under these change, application will reload.
-  ignoreDirs: [], // dirs don't need watch, including subdirectories
-  fastReady: true, // don't wait all plugins ready
-};
-```
-
-## About Reload
+### About Reload
 
 Under the following directory (including subdirectories) will watch file changes under development environment by default, trigger an Egg development environment server reload:
 

@@ -16,21 +16,24 @@
 
 这是针对 egg 本地开发环境特定功能的插件，此插件默认在开发环境启用，其他环境关闭。
 
-### 功能
+## 开启插件
+
+```js
+// config/plugin.js
+exports.development = {
+  enable: true,
+  package: 'egg-development',
+};
+```
+
+## 配置
+
+请到 [config/config.default.js](https://github.com/eggjs/egg-development/blob/master/config/config.default.js) 查看详细配置项说明。
+
+## 功能
 
 - 开发环境的请求日志在 STDOUT 输出，并统计各个关键部位耗时并输出；
 - 监视应用文件变动，实现 Reload 重新加载新的代码；
-
-### 配置
-
-```js
-// config/config.local.js
-exports.development = {
-  watchDirs: [], // 指定监视的目录（包括子目录），当目录下的文件变化的时候自动重载应用，路径从项目根目录开始写
-  ignoreDirs: [], // 指定过滤的目录（包括子目录）
-  fastReady: true, // 启动后马上 ready
-};
-```
 
 ### 关于 Reload
 
@@ -45,3 +48,11 @@ exports.development = {
 
 - $project/app/views
 - $project/app/assets
+
+## 提问交流
+
+请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
+
+## License
+
+[MIT](LICENSE)
