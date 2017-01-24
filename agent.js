@@ -17,6 +17,7 @@ module.exports = agent => {
 
   const ignoreReloadFileDirs = [
     'app/views',
+    'app/view',
     'app/assets',
     'app/public',
   ].concat(config.ignoreDirs).map(dir => path.join(baseDir, dir));
