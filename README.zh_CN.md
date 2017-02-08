@@ -1,18 +1,24 @@
 # egg-development
 
-[![TNPM version][tnpm-image]][tnpm-url]
-[![TNPM downloads][tnpm-downloads-image]][tnpm-url]
-[![build status][ci-image]][ci-url]
-[![line coverage][line-coverage-image]][ci-url]
-[![branch coverage][branch-coverage-image]][ci-url]
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][codecov-image]][codecov-url]
+[![David deps][david-image]][david-url]
+[![Known Vulnerabilities][snyk-image]][snyk-url]
+[![npm download][download-image]][download-url]
 
-[tnpm-image]: http://web.npm.alibaba-inc.com/badge/v/@ali/egg-development.svg?style=flat-square
-[tnpm-url]: http://web.npm.alibaba-inc.com/package/@ali/egg-development
-[tnpm-downloads-image]: http://web.npm.alibaba-inc.com/badge/d/egg-development.svg?style=flat-square
-[ci-image]: http://cise.alibaba-inc.com/task/160079/status.svg
-[ci-url]: http://cise.alibaba-inc.com/task/160079
-[line-coverage-image]: http://cise.alibaba-inc.com/task/160079/ut_line_coverage.svg
-[branch-coverage-image]: http://cise.alibaba-inc.com/task/160079/ut_branch_coverage.svg
+[npm-image]: https://img.shields.io/npm/v/egg-development.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/egg-development
+[travis-image]: https://img.shields.io/travis/eggjs/egg-development.svg?style=flat-square
+[travis-url]: https://travis-ci.org/eggjs/egg-development
+[codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-development.svg?style=flat-square
+[codecov-url]: https://codecov.io/github/eggjs/egg-development?branch=master
+[david-image]: https://img.shields.io/david/eggjs/egg-development.svg?style=flat-square
+[david-url]: https://david-dm.org/eggjs/egg-development
+[snyk-image]: https://snyk.io/test/npm/egg-development/badge.svg?style=flat-square
+[snyk-url]: https://snyk.io/test/npm/egg-development
+[download-image]: https://img.shields.io/npm/dm/egg-development.svg?style=flat-square
+[download-url]: https://npmjs.org/package/egg-development
 
 这是针对 egg 本地开发环境特定功能的插件，此插件默认在开发环境启用，其他环境关闭。
 
