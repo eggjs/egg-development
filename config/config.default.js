@@ -11,3 +11,11 @@ exports.development = {
   ignoreDirs: [],
   fastReady: true,
 };
+
+exports.logger = {
+  level: 'DEBUG',
+  coreLogger: {
+    consoleLevel: 'WARN',
+  },
+  buffer: false,
+};

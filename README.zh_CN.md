@@ -38,8 +38,9 @@ exports.development = {
 
 ## 功能
 
-- 开发环境的请求日志在 STDOUT 输出，并统计各个关键部位耗时并输出；
-- 监视应用文件变动，实现 Reload 重新加载新的代码；
+- 开发环境的请求日志在 STDOUT 输出，并统计各个关键部位耗时并输出
+- 监视应用文件变动，实现 Reload 重新加载新的代码
+- 默认的 logger level 改为 `DEBUG`
 
 ### 关于 Reload
 
