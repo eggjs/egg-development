@@ -38,8 +38,9 @@ see [config/config.default.js](https://github.com/eggjs/egg-development/blob/mas
 
 ## Features
 
-- Under development environment, Output request log in STDOUT, statistic and output all key parts time-consuming;
-- Watch file changes, and reload application；
+- Under development environment, Output request log in STDOUT, statistic and output all key parts time-consuming
+- Watch file changes, and reload application
+- Set logger default level to `DEBUG`
 
 ### About Reload
 
