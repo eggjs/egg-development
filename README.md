@@ -55,6 +55,8 @@ Under the following directory (including subdirectories) will ignore file change
 - $project/app/view
 - $project/app/assets
 
+See [egg-development-proxyworker](https://github.com/eggjs/egg-development-proxyworker) for keep debug port when restart.
+
 ## Questions & Suggestions
 
 Please open an issue [here](https://github.com/eggjs/egg/issues).
