@@ -55,6 +55,9 @@ exports.development = {
 - $project/app/view
 - $project/app/assets
 
+
+重启后，worker 的端口会变化，可以使用 [egg-development-proxyworker](https://github.com/eggjs/egg-development-proxyworker) 插件来保持同个断点端口。
+
 ## 提问交流
 
 请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。

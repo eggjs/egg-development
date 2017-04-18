@@ -37,8 +37,7 @@ module.exports = agent => {
    * @param {Object} info - changed fileInfo
    */
   function reloadWorker(info) {
-    // don't reload at `egg-bin debug`
-    if (process.env.EGG_DEBUG) {
+    if (!config.reloadOnDebug) {
       return;
     }
 
