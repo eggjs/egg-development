@@ -64,5 +64,5 @@ exports.development = {
 
 ## License
 
-[MIT](https://github.com/eggjs/egg-onerror/blob/master/LICENSE)
+[MIT](https://github.com/eggjs/egg-development/blob/master/LICENSE)
 
