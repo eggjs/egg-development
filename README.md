@@ -63,4 +63,5 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/eggjs/egg-development/blob/master/LICENSE)
+
