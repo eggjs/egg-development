@@ -1,4 +1,10 @@
 
+2.0.0 / 2017-11-09
+==================
+
+**others**
+  * [[`4416724`](http://github.com/eggjs/egg-development/commit/44167241fdb7cd11a5c68b4de5e728aa8992dcf8)] - refactor: drop <8.x, support egg2. [BREAKING CHANGE] (#12) (TZ | 天猪 <<atian25@qq.com>>)
+
 1.3.2 / 2017-11-01
 ==================
 
