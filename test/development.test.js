@@ -1,9 +1,9 @@
 'use strict';
 
 const mm = require('egg-mock');
-const fs = require('fs');
+const fs = require('mz/fs');
 const path = require('path');
-const sleep = require('ko-sleep');
+const sleep = require('mz-modules/sleep');
 const assert = require('assert');
 
 describe('test/development.test.js', () => {
@@ -17,35 +17,35 @@ describe('test/development.test.js', () => {
   });
   after(() => app.close());
 
-  it('should reload when change service', function* () {
+  it('should reload when change service', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/service/a.js');
-    fs.writeFileSync(filepath, '');
-    yield sleep(1000);
+    await fs.writeFile(filepath, '');
+    await sleep(1000);
 
-    fs.unlinkSync(filepath);
+    await fs.unlink(filepath);
     app.expect('stdout', new RegExp(`reload worker because ${filepath}`));
   });
 
-  it('should not reload when change assets', function* () {
+  it('should not reload when change assets', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/assets/b.js');
-    fs.writeFileSync(filepath, '');
-    yield sleep(1000);
+    await fs.writeFile(filepath, '');
+    await sleep(1000);
 
-    fs.unlinkSync(filepath);
+    await fs.unlink(filepath);
     app.notExpect('stdout', new RegExp(`reload worker because ${filepath}`));
   });
 
-  it('should reload once when 2 file change', function* () {
+  it('should reload once when 2 file change', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/service/c.js');
     const filepath1 = path.join(__dirname, 'fixtures/development/app/service/d.js');
-    fs.writeFileSync(filepath, '');
+    await fs.writeFile(filepath, '');
     // set a timeout for watcher's interval
-    yield sleep(1000);
-    fs.writeFileSync(filepath1, '');
+    await sleep(1000);
+    await fs.writeFile(filepath1, '');
 
-    yield sleep(2000);
-    fs.unlinkSync(filepath);
-    fs.unlinkSync(filepath1);
+    await sleep(2000);
+    await fs.unlink(filepath);
+    await fs.unlink(filepath1);
 
     assert(count(app.stdout, 'reload worker'), 2);
   });

@@ -22,15 +22,8 @@
 
 This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
 
-## Usage
+`egg-development` has been built-in for egg. It is enabled by default.
 
-```js
-// config/plugin.js
-exports.development = {
-  enable: true,
-  package: 'egg-development',
-};
-```
 
 ## Configuration
 

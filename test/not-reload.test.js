@@ -1,9 +1,9 @@
 'use strict';
 
 const mm = require('egg-mock');
-const fs = require('fs');
+const fs = require('mz/fs');
 const path = require('path');
-const sleep = require('ko-sleep');
+const sleep = require('mz-modules/sleep');
 
 describe('test/not-reload.test.js', () => {
   let app;
@@ -16,12 +16,12 @@ describe('test/not-reload.test.js', () => {
   });
   after(() => app.close());
 
-  it('should reload', function* () {
+  it('should reload', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/service/a.js');
-    fs.writeFileSync(filepath, '');
-    yield sleep(1000);
+    await fs.writeFile(filepath, '');
+    await sleep(1000);
 
-    fs.unlinkSync(filepath);
+    await fs.unlink(filepath);
     app.notExpect('stdout', new RegExp(`reload worker because ${filepath} change`));
   });
 });

@@ -28,9 +28,8 @@
     "egg-mock": "^3.13.1",
     "eslint": "^4.10.0",
     "eslint-config-egg": "^5.1.1",
-    "ko-sleep": "^1.0.3",
-    "rimraf": "^2.5.4",
-    "supertest": "^2.0.1"
+    "mz": "^2.7.0",
+    "mz-modules": "^2.0.0"
   },
   "engines": {
     "node": ">=8.0.0"
