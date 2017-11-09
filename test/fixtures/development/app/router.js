@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(app) {
+module.exports = app => {
   app.get('/foo.js', function* () {
     this.body = 'foo.js';
   });

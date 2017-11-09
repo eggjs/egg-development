@@ -1,7 +1,7 @@
 'use strict';
 
 const mm = require('egg-mock');
-const sleep = require('ko-sleep');
+const sleep = require('mz-modules/sleep');
 
 describe('fastReady = false', () => {
   let app;
@@ -11,24 +11,24 @@ describe('fastReady = false', () => {
   afterEach(() => app.close());
   afterEach(mm.restore);
 
-  it('should fast ready by default', function* () {
+  it('should fast ready by default', async () => {
     app = mm.cluster({
       baseDir: 'delay-ready',
     });
-    yield app.ready();
+    await app.ready();
     // We need to wait for log written, because app.logger.info is async.
-    yield sleep(100);
+    await sleep(100);
 
     app.expect('stdout', /Server started./);
   });
 
-  it('should not fast ready if config.development.fastReady is false', function* () {
+  it('should not fast ready if config.development.fastReady is false', async () => {
     app = mm.cluster({
       baseDir: 'fast-ready',
     });
-    yield app.ready();
+    await app.ready();
     // We need to wait for log written, because app.logger.info is async.
-    yield sleep(300);
+    await sleep(300);
 
     app.expect('stdout', /delayed 200ms done./);
     app.expect('stdout', /Server started./);
