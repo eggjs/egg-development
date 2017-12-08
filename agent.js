@@ -8,12 +8,14 @@ module.exports = agent => {
   const baseDir = agent.config.baseDir;
   const config = agent.config.development;
 
-  const watchDirs = [
+  let watchDirs = config.overrideDefault ? [] : [
     'app',
     'config',
     'mocks',
     'mocks_proxy',
-  ].concat(config.watchDirs).map(dir => path.join(baseDir, dir));
+  ];
+
+  watchDirs = watchDirs.concat(config.watchDirs).map(dir => path.join(baseDir, dir));
 
   const ignoreReloadFileDirs = [
     'app/views',
