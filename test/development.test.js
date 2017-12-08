@@ -16,6 +16,9 @@ describe('test/development.test.js', () => {
     return app.ready();
   });
   after(() => app.close());
+  afterEach(mm.restore);
+  // for debounce
+  afterEach(() => sleep(500));
 
   it('should reload when change service', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/service/a.js');
