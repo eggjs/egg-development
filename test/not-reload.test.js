@@ -9,15 +9,22 @@ describe('test/not-reload.test.js', () => {
   let app;
   before(() => {
     mm.env('local');
+    mm(process.env, 'EGG_DEBUG', true);
     app = mm.cluster({
       baseDir: 'not-reload',
+      opt: {
+        execArgv: [ '--inspect' ],
+      },
     });
     return app.ready();
   });
   after(() => app.close());
+  afterEach(mm.restore);
+  // for debounce
+  afterEach(() => sleep(500));
 
-  it('should reload', async () => {
-    const filepath = path.join(__dirname, 'fixtures/development/app/service/a.js');
+  it('should not reload', async () => {
+    const filepath = path.join(__dirname, 'fixtures/not-reload/app/service/a.js');
     await fs.writeFile(filepath, '');
     await sleep(1000);
 
