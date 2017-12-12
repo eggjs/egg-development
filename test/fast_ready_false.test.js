@@ -10,6 +10,8 @@ describe('fastReady = false', () => {
   });
   afterEach(() => app.close());
   afterEach(mm.restore);
+  // for debounce
+  afterEach(() => sleep(500));
 
   it('should fast ready by default', async () => {
     app = mm.cluster({

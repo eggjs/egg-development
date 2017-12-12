@@ -38,15 +38,17 @@ see [config/config.default.js](https://github.com/eggjs/egg-development/blob/mas
 
 Under the following directory (including subdirectories) will watch file changes under development environment by default, trigger an Egg development environment server reload:
 
-- $project/app
-- $project/config
-- $project/mocks
-- $project/mocks_proxy
+- ${app_root}/app
+- ${app_root}/config
+- ${app_root}/mocks
+- ${app_root}/mocks_proxy
+
+> set `config.development.overrideDefault` to `true` to skip defaults merge.
 
 Under the following directory (including subdirectories) will ignore file changes under development environment by default:
 
-- $project/app/view
-- $project/app/assets
+- ${app_root}/app/view
+- ${app_root}/app/assets
 
 ## Questions & Suggestions
 

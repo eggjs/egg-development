@@ -5,16 +5,12 @@ const fs = require('mz/fs');
 const path = require('path');
 const sleep = require('mz-modules/sleep');
 
-describe('test/not-reload.test.js', () => {
+describe('test/override.test.js', () => {
   let app;
   before(() => {
     mm.env('local');
-    mm(process.env, 'EGG_DEBUG', true);
     app = mm.cluster({
-      baseDir: 'not-reload',
-      opt: {
-        execArgv: [ '--inspect' ],
-      },
+      baseDir: 'override',
     });
     return app.ready();
   });
@@ -23,12 +19,22 @@ describe('test/not-reload.test.js', () => {
   // for debounce
   afterEach(() => sleep(500));
 
-  it('should not reload', async () => {
-    const filepath = path.join(__dirname, 'fixtures/not-reload/app/service/a.js');
+  it('should reload', async () => {
+    const filepath = path.join(__dirname, 'fixtures/override/app/service/a.js');
     await fs.writeFile(filepath, '');
     await sleep(1000);
 
     await fs.unlink(filepath);
+    app.expect('stdout', new RegExp(`reload worker because ${filepath}`));
+  });
+
+  it('should not reload', async () => {
+    app.debug();
+    const filepath = path.join(__dirname, 'fixtures/override/app/no-trigger/index.js');
+    await fs.writeFile(filepath, '');
+    await sleep(1000);
+
+    // await fs.unlink(filepath);
     app.notExpect('stdout', new RegExp(`reload worker because ${filepath} change`));
   });
 });
