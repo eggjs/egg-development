@@ -1,4 +1,10 @@
 
+2.1.0 / 2017-12-13
+==================
+
+**features**
+  * [[`252929f`](http://github.com/eggjs/egg-development/commit/252929f980d055e1cec05811981e204d0d81cb23)] - feat: support override watchDirs (#13) (TZ | 天猪 <<atian25@qq.com>>)
+
 2.0.0 / 2017-11-09
 ==================
 
