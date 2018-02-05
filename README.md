@@ -50,6 +50,21 @@ Under the following directory (including subdirectories) will ignore file change
 - ${app_root}/app/view
 - ${app_root}/app/assets
 
+Developer can detect whether reload by custom `config.development.onChange(filePath, info)`.
+
+```js
+// config/config.default.js
+exports.development = {
+  onChange(filePath) {
+    // don't reload when ts file change
+    if (filePath.endsWith('.ts')) {
+      return false;
+    }
+    return true;
+  }
+};
+```
+
 ## Questions & Suggestions
 
 Please open an issue [here](https://github.com/eggjs/egg/issues).

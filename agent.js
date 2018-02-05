@@ -2,6 +2,7 @@
 
 const path = require('path');
 const debounce = require('debounce');
+const is = require('is-type-of');
 
 module.exports = agent => {
   const logger = agent.logger;
@@ -44,6 +45,11 @@ module.exports = agent => {
     }
 
     if (isAssetsDir(info.path) || info.isDirectory) {
+      return;
+    }
+
+    // if `onChange` return false, then don't reload
+    if (is.function(config.onChange) && !config.onChange(info.path, info)) {
       return;
     }
 

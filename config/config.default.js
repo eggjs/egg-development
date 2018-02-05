@@ -7,6 +7,7 @@
  * @property {Boolean} fastReady - don't wait all plugins ready, default is false.
  * @property {Boolean} reloadOnDebug - whether reload on debug, default is true.
  * @property {Boolean} overrideDefault - whether override default watchDirs, default is false.
+ * @property {Function} onChange - whether to reload with custom detect, `onChange(filePath, info)`
  * @see https://github.com/eggjs/egg-development-proxyworker to keep debug port when restart
  */
 exports.development = {
@@ -15,4 +16,5 @@ exports.development = {
   fastReady: false,
   reloadOnDebug: true,
   overrideDefault: false,
+  onChange: undefined,
 };
