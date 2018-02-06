@@ -50,18 +50,14 @@ Under the following directory (including subdirectories) will ignore file change
 - ${app_root}/app/view
 - ${app_root}/app/assets
 
-Developer can detect whether reload by custom `config.development.onChange(filePath, info)`.
+Developer can use `config.pattern`([multimatch](https://github.com/sindresorhus/multimatch)) to control whether to reload.
 
 ```js
 // config/config.default.js
 exports.development = {
-  onChange(filePath) {
-    // don't reload when ts file change
-    if (filePath.endsWith('.ts')) {
-      return false;
-    }
-    return true;
-  }
+  // don't reload when ts fileChanged
+  // https://github.com/sindresorhus/multimatch
+  pattern: ['**', '!**/*.ts'],
 };
 ```
 

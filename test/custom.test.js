@@ -12,7 +12,7 @@ describe('test/custom.test.js', () => {
     app = mm.cluster({
       baseDir: 'custom',
     });
-    // app.debug();
+    app.debug();
     return app.ready();
   });
   after(() => app.close());

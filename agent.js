@@ -2,7 +2,7 @@
 
 const path = require('path');
 const debounce = require('debounce');
-const is = require('is-type-of');
+const multimatch = require('multimatch');
 
 module.exports = agent => {
   const logger = agent.logger;
@@ -48,8 +48,8 @@ module.exports = agent => {
       return;
     }
 
-    // if `onChange` return false, then don't reload
-    if (is.function(config.onChange) && !config.onChange(info.path, info)) {
+    // don't reload if don't match
+    if (config.pattern && multimatch(info.path, config.pattern).length === 0) {
       return;
     }
 
