@@ -2,6 +2,7 @@
 
 const path = require('path');
 const debounce = require('debounce');
+const multimatch = require('multimatch');
 
 module.exports = agent => {
   const logger = agent.logger;
@@ -44,6 +45,11 @@ module.exports = agent => {
     }
 
     if (isAssetsDir(info.path) || info.isDirectory) {
+      return;
+    }
+
+    // don't reload if don't match
+    if (config.reloadPattern && multimatch(info.path, config.reloadPattern).length === 0) {
       return;
     }
 

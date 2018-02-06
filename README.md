@@ -50,6 +50,17 @@ Under the following directory (including subdirectories) will ignore file change
 - ${app_root}/app/view
 - ${app_root}/app/assets
 
+Developer can use `config.reloadPattern`([multimatch](https://github.com/sindresorhus/multimatch)) to control whether to reload.
+
+```js
+// config/config.default.js
+exports.development = {
+  // don't reload when ts fileChanged
+  // https://github.com/sindresorhus/multimatch
+  reloadPattern: ['**', '!**/*.ts'],
+};
+```
+
 ## Questions & Suggestions
 
 Please open an issue [here](https://github.com/eggjs/egg/issues).
