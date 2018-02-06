@@ -1,4 +1,10 @@
 
+2.2.0 / 2018-02-06
+==================
+
+**features**
+  * [[`307dc9c`](http://github.com/eggjs/egg-development/commit/307dc9c2659adea5fa6e9bcb65e8db178f8de366)] - feat: support custom `config.development.reloadPattern ` (#14) (TZ | 天猪 <<atian25@qq.com>>)
+
 2.1.0 / 2017-12-13
 ==================
 
