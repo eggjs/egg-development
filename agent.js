@@ -49,7 +49,7 @@ module.exports = agent => {
     }
 
     // don't reload if don't match
-    if (config.pattern && multimatch(info.path, config.pattern).length === 0) {
+    if (config.reloadPattern && multimatch(info.path, config.reloadPattern).length === 0) {
       return;
     }
 

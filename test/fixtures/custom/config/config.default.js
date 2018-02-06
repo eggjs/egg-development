@@ -1,5 +1,5 @@
 'use strict';
 
 exports.development = {
-  pattern: ['**', '!**/*.ts'],
+  reloadPattern: ['**', '!**/*.ts'],
 }
