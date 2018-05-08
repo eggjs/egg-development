@@ -18,7 +18,10 @@
     "eggPlugin"
   ],
   "dependencies": {
-    "debounce": "^1.1.0"
+    "debounce": "^1.1.0",
+    "mz": "^2.7.0",
+    "mz-modules": "^2.1.0",
+    "utility": "^1.13.1"
   },
   "devDependencies": {
     "autod": "^2.10.1",
