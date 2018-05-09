@@ -10,7 +10,6 @@ module.exports = app => {
   if (app.config.development.fastReady) process.nextTick(() => app.ready(true));
 
   app.beforeStart(function* () {
-
     const template = yield fs.readFile(path.join(__dirname, 'lib/loader_trace.html'), 'utf8');
 
     app.router.get('/__loader_trace__', function* () {
