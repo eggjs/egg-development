@@ -4,6 +4,7 @@ const mm = require('egg-mock');
 const fs = require('mz/fs');
 const path = require('path');
 const mkdirp = require('mz-modules/mkdirp');
+const sleep = require('mz-modules/sleep');
 const assert = require('assert');
 
 
@@ -28,6 +29,8 @@ describe('test/timing.test.js', () => {
   });
 
   it('should render page', function* () {
+    yield sleep(1000);
+
     const res = yield app.httpRequest()
       .get('/__loader_trace__');
 
