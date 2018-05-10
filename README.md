@@ -55,6 +55,10 @@ Under the following directory (including subdirectories) will ignore file change
 - $project/app/view
 - $project/app/assets
 
+### Loader Trace
+
+You can view loader trace for performance issue from `http://127.0.0.1:7001/__loader_trace__`
+
 ## Questions & Suggestions
 
 Please open an issue [here](https://github.com/eggjs/egg/issues).
@@ -62,4 +66,3 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 ## License
 
 [MIT](https://github.com/eggjs/egg-development/blob/master/LICENSE)
-

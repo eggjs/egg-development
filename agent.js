@@ -2,6 +2,8 @@
 
 const path = require('path');
 const debounce = require('debounce');
+const rimraf = require('mz-modules/rimraf');
+
 
 module.exports = agent => {
   const logger = agent.logger;
@@ -24,6 +26,11 @@ module.exports = agent => {
 
   // watch dirs to reload worker, will debounce 200ms
   agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
+
+  // clean all timing json
+  agent.beforeStart(function* () {
+    yield rimraf(agent.config.rundir);
+  });
 
   /**
    * reload app worker:
