@@ -55,6 +55,10 @@ exports.development = {
 - $project/app/view
 - $project/app/assets
 
+### Loader Trace
+
+你可以访问 `http://127.0.0.1:7001/__loader_trace__` 查看 Loader 的速度。
+
 ## 提问交流
 
 请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
@@ -62,4 +66,3 @@ exports.development = {
 ## License
 
 [MIT](https://github.com/eggjs/egg-development/blob/master/LICENSE)
-
