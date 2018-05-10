@@ -1,4 +1,10 @@
 
+1.4.0 / 2018-05-10
+==================
+
+**features**
+  * [[`45f4bbe`](http://github.com/eggjs/egg-development/commit/45f4bbef5cc706fdf50ed49a14e31e8da62b8000)] - feat: show loader timing (#15) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 1.3.2 / 2017-11-01
 ==================
 
