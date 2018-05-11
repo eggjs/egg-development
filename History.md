@@ -1,4 +1,10 @@
 
+1.4.2 / 2018-05-11
+==================
+
+**fixes**
+  * [[`0e37a8d`](http://github.com/eggjs/egg-development/commit/0e37a8ddc4da04b9127f32b8a8be3ad082f0b756)] - fix: should not remove all files in rundir (#16) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 1.4.1 / 2018-05-10
 ==================
 
