@@ -4,6 +4,7 @@ const path = require('path');
 const debounce = require('debounce');
 const multimatch = require('multimatch');
 const rimraf = require('mz-modules/rimraf');
+const fs = require('mz/fs');
 
 
 module.exports = agent => {
@@ -32,7 +33,12 @@ module.exports = agent => {
 
   // clean all timing json
   agent.beforeStart(function* () {
-    yield rimraf(agent.config.rundir);
+    const rundir = agent.config.rundir;
+    const files = yield fs.readdir(rundir);
+    for (const file of files) {
+      if (!/^(agent|application)_timing/.test(file)) continue;
+      yield rimraf(path.join(agent.config.rundir, file));
+    }
   });
 
   /**

@@ -10,10 +10,12 @@ const assert = require('assert');
 
 describe('test/timing.test.js', () => {
   const timingJSON = path.join(__dirname, 'fixtures/timing/run/agent_timing_11111.json');
+  const configJSON = path.join(__dirname, 'fixtures/timing/run/application_config.json');
   let app;
   before(function* () {
     yield mkdirp(path.dirname(timingJSON));
     yield fs.writeFile(timingJSON, '[]');
+    yield fs.writeFile(configJSON, '{}');
     mm.env('local');
     app = mm.cluster({
       baseDir: 'timing',
@@ -25,7 +27,10 @@ describe('test/timing.test.js', () => {
   it('should clean all timing json in agent', function* () {
     yield app.httpRequest()
       .get('/checkFile')
-      .expect('false');
+      .expect({
+        timing: false,
+        config: true,
+      });
   });
 
   it('should render page', function* () {
