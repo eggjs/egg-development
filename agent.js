@@ -32,12 +32,12 @@ module.exports = agent => {
   agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
 
   // clean all timing json
-  agent.beforeStart(function* () {
+  agent.beforeStart(async () => {
     const rundir = agent.config.rundir;
-    const files = yield fs.readdir(rundir);
+    const files = await fs.readdir(rundir);
     for (const file of files) {
       if (!/^(agent|application)_timing/.test(file)) continue;
-      yield rimraf(path.join(agent.config.rundir, file));
+      await rimraf(path.join(agent.config.rundir, file));
     }
   });
 

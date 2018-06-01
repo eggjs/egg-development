@@ -9,23 +9,23 @@ module.exports = app => {
   // if true, then don't need to wait at local development mode
   if (app.config.development.fastReady) process.nextTick(() => app.ready(true));
 
-  app.beforeStart(function* () {
-    const template = yield fs.readFile(path.join(__dirname, 'lib/loader_trace.html'), 'utf8');
+  app.beforeStart(async () => {
+    const template = await fs.readFile(path.join(__dirname, 'lib/loader_trace.html'), 'utf8');
 
-    app.router.get('/__loader_trace__', function* () {
-      const data = yield loadTimingData(app);
-      this.body = template.replace('{{placeholder}}', JSON.stringify(data));
+    app.router.get('/__loader_trace__', async ctx => {
+      const data = await loadTimingData(app);
+      ctx.body = template.replace('{{placeholder}}', JSON.stringify(data));
     });
   });
 };
 
-function* loadTimingData(app) {
+async function loadTimingData(app) {
   const rundir = app.config.rundir;
-  const files = yield fs.readdir(rundir);
+  const files = await fs.readdir(rundir);
   const data = [];
   for (const file of files) {
     if (!/^(agent|application)_timing/.test(file)) continue;
-    const json = yield utility.readJSON(path.join(rundir, file));
+    const json = await utility.readJSON(path.join(rundir, file));
     const isAgent = /^agent/.test(file);
     for (const item of json) {
       if (isAgent) {

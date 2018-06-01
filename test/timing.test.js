@@ -12,20 +12,20 @@ describe('test/timing.test.js', () => {
   const timingJSON = path.join(__dirname, 'fixtures/timing/run/agent_timing_11111.json');
   const configJSON = path.join(__dirname, 'fixtures/timing/run/application_config.json');
   let app;
-  before(function* () {
-    yield mkdirp(path.dirname(timingJSON));
-    yield fs.writeFile(timingJSON, '[]');
-    yield fs.writeFile(configJSON, '{}');
+  before(async () => {
+    await mkdirp(path.dirname(timingJSON));
+    await fs.writeFile(timingJSON, '[]');
+    await fs.writeFile(configJSON, '{}');
     mm.env('local');
     app = mm.cluster({
       baseDir: 'timing',
     });
-    yield app.ready();
+    await app.ready();
   });
   after(() => app.close());
 
-  it('should clean all timing json in agent', function* () {
-    yield app.httpRequest()
+  it('should clean all timing json in agent', async () => {
+    await app.httpRequest()
       .get('/checkFile')
       .expect({
         timing: false,
@@ -33,10 +33,10 @@ describe('test/timing.test.js', () => {
       });
   });
 
-  it('should render page', function* () {
-    yield sleep(1000);
+  it('should render page', async () => {
+    await sleep(1000);
 
-    const res = yield app.httpRequest()
+    const res = await app.httpRequest()
       .get('/__loader_trace__');
 
     let json = res.text.match(/data = (.*?);/);
