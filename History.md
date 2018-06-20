@@ -1,4 +1,10 @@
 
+2.3.1 / 2018-06-20
+==================
+
+**others**
+  * [[`f87bee2`](http://github.com/eggjs/egg-development/commit/f87bee2171f29b042e88503896c8e8de11be6167)] - chore: missing lib directory in pkg.files (#18) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 2.3.0 / 2018-06-20
 ==================
 
