@@ -54,6 +54,7 @@
     "url": "git+https://github.com/eggjs/egg-development.git"
   },
   "files": [
+    "lib",
     "config",
     "agent.js",
     "app.js"
