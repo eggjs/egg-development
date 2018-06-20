@@ -1,4 +1,10 @@
 
+2.3.0 / 2018-06-20
+==================
+
+**features**
+  * [[`3b6c138`](http://github.com/eggjs/egg-development/commit/3b6c1387712b68f7e0eb9833f7c486e37d77f8fd)] - feat: pick show loader timing (#17) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 2.2.0 / 2018-02-06
 ==================
 
