@@ -3,6 +3,9 @@
 const path = require('path');
 const debounce = require('debounce');
 const multimatch = require('multimatch');
+const rimraf = require('mz-modules/rimraf');
+const fs = require('mz/fs');
+
 
 module.exports = agent => {
   const logger = agent.logger;
@@ -27,6 +30,16 @@ module.exports = agent => {
 
   // watch dirs to reload worker, will debounce 200ms
   agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
+
+  // clean all timing json
+  agent.beforeStart(async () => {
+    const rundir = agent.config.rundir;
+    const files = await fs.readdir(rundir);
+    for (const file of files) {
+      if (!/^(agent|application)_timing/.test(file)) continue;
+      await rimraf(path.join(agent.config.rundir, file));
+    }
+  });
 
   /**
    * reload app worker:
