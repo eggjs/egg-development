@@ -53,6 +53,6 @@ describe('test/timing.test.js', () => {
     assert(/^app_\d+$/.test(last.type));
     assert(typeof last.pid === 'string');
     assert.deepEqual(last.range, [ last.start, last.end ]);
-    assert(/^app_\d+\(65\)$/.test(last.title));
+    assert(/^app_\d+\(66\)$/.test(last.title));
   });
 });
