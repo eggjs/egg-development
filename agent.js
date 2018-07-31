@@ -17,6 +17,7 @@ module.exports = agent => {
     'config',
     'mocks',
     'mocks_proxy',
+    'app.js',
   ];
 
   watchDirs = watchDirs.concat(config.watchDirs).map(dir => path.join(baseDir, dir));
