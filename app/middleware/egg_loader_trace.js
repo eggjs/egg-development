@@ -6,8 +6,8 @@ const utility = require('utility');
 
 module.exports = (_, app) => {
   return async (ctx, next) => {
-    const template = await fs.readFile(path.join(__dirname, '../../lib/loader_trace.html'), 'utf8');
     if (ctx.path !== '/__loader_trace__') return await next();
+    const template = await fs.readFile(path.join(__dirname, '../../lib/loader_trace.html'), 'utf8');
     const data = await loadTimingData(app);
     ctx.body = template.replace('{{placeholder}}', JSON.stringify(data));
   };
@@ -28,10 +28,10 @@ async function loadTimingData(app) {
         item.type = `app_${item.pid}`;
       }
       item.pid = String(item.pid);
-      item.range = [item.start, item.end];
+      item.range = [ item.start, item.end ];
       item.title = `${item.type}(${item.index})`;
       data.push(item);
     }
   }
   return data;
-};
+}
