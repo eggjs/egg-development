@@ -1,4 +1,10 @@
 
+2.4.1 / 2018-08-02
+==================
+
+**fixes**
+  * [[`88f2967`](http://github.com/eggjs/egg-development/commit/88f2967207a43ba6a7e79a3426d3d1eae78fa292)] - fix: load router by middleware (#20) (Yiyu He <<dead_horse@qq.com>>)
+
 2.4.0 / 2018-07-31
 ==================
 
