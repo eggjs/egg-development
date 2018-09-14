@@ -42,6 +42,20 @@ module.exports = agent => {
     }
   });
 
+  // add simple lifecycle beforeReload 
+  const scopeList = [];
+  agent.beforeReload = async function (scope) {
+    scopeList.push(scope);
+  }
+
+  // run lifecycle beforeReload function
+  async function runBeforeReloadFunc()
+  {
+    for (const scope of scopeList) {
+        await scope();
+    }
+  }
+
   /**
    * reload app worker:
    *   [AgentWorker] - on file change
@@ -53,7 +67,7 @@ module.exports = agent => {
    *
    * @param {Object} info - changed fileInfo
    */
-  function reloadWorker(info) {
+  async function reloadWorker(info) {
     if (!config.reloadOnDebug) {
       return;
     }
@@ -66,6 +80,9 @@ module.exports = agent => {
     if (config.reloadPattern && multimatch(info.path, config.reloadPattern).length === 0) {
       return;
     }
+
+    // dev lifecycle add BeforeReload events
+    await runBeforeReloadFunc();
 
     logger.warn(`[agent:development] reload worker because ${info.path} ${info.event}`);
 
