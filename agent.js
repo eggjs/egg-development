@@ -8,6 +8,19 @@ const fs = require('mz/fs');
 
 
 module.exports = agent => {
+  // clean all timing json
+  agent.beforeStart(async () => {
+    const rundir = agent.config.rundir;
+    const files = await fs.readdir(rundir);
+    for (const file of files) {
+      if (!/^(agent|application)_timing/.test(file)) continue;
+      await rimraf(path.join(agent.config.rundir, file));
+    }
+  });
+
+  // single process mode don't watch and reload
+  if (agent.options && agent.options.mode === 'single') return;
+
   const logger = agent.logger;
   const baseDir = agent.config.baseDir;
   const config = agent.config.development;
@@ -31,16 +44,6 @@ module.exports = agent => {
 
   // watch dirs to reload worker, will debounce 200ms
   agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
-
-  // clean all timing json
-  agent.beforeStart(async () => {
-    const rundir = agent.config.rundir;
-    const files = await fs.readdir(rundir);
-    for (const file of files) {
-      if (!/^(agent|application)_timing/.test(file)) continue;
-      await rimraf(path.join(agent.config.rundir, file));
-    }
-  });
 
   /**
    * reload app worker:

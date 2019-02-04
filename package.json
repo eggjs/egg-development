@@ -33,7 +33,8 @@
     "eslint": "^4.17.0",
     "eslint-config-egg": "^6.0.0",
     "mz": "^2.7.0",
-    "mz-modules": "^2.0.0"
+    "mz-modules": "^2.0.0",
+    "supertest": "^3.4.2"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -55,7 +56,6 @@
   },
   "files": [
     "app",
-    "lib",
     "config",
     "agent.js",
     "app.js"
