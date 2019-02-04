@@ -7,7 +7,7 @@ const request = require('supertest');
 const mm = require('egg-mock');
 const assert = require('assert');
 
-describe.only('test/process_mode_single.test.js', () => {
+describe('test/process_mode_single.test.js', () => {
   let app;
   before(async () => {
     app = await require('egg').start({
