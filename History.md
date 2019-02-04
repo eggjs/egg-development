@@ -1,4 +1,10 @@
 
+2.4.2 / 2019-02-04
+==================
+
+**fixes**
+  * [[`1ea1c61`](http://github.com/eggjs/egg-development/commit/1ea1c618616e165da771c1bb4ff87f2abd0635b8)] - fix: don't reload in single process mode (#22) (Yiyu He <<dead_horse@qq.com>>)
+
 2.4.1 / 2018-08-02
 ==================
 
