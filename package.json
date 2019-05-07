@@ -57,6 +57,7 @@
   "files": [
     "app",
     "config",
+    "lib",
     "agent.js",
     "app.js"
   ],
