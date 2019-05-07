@@ -41,7 +41,7 @@ describe('test/timing.test.js', () => {
 
     let json = res.text.match(/data = (.*?);/);
     json = JSON.parse(json[1]);
-    assert(json.length === 103);
+    assert(json.length === 111);
 
     const first = json[0];
     assert(first.type === 'agent');
