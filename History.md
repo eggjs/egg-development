@@ -1,4 +1,10 @@
 
+2.4.3 / 2019-05-07
+==================
+
+**fixes**
+  * [[`8c716f1`](http://github.com/eggjs/egg-development/commit/8c716f1bca5a44478229abf5ff2c47bc6fb3822f)] - fix: missing lib folder in npm package (#23) (Khaidi Chu <<i@2333.moe>>)
+
 2.4.2 / 2019-02-04
 ==================
 
