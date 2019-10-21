@@ -42,13 +42,16 @@ Under the following directory (including subdirectories) will watch file changes
 - ${app_root}/config
 - ${app_root}/mocks
 - ${app_root}/mocks_proxy
+- ${app_root}/app.js
 
 > set `config.development.overrideDefault` to `true` to skip defaults merge.
 
 Under the following directory (including subdirectories) will ignore file changes under development environment by default:
 
+- ${app_root}/app/views
 - ${app_root}/app/view
 - ${app_root}/app/assets
+- ${app_root}/app/public
 
 Developer can use `config.reloadPattern`([multimatch](https://github.com/sindresorhus/multimatch)) to control whether to reload.
 
