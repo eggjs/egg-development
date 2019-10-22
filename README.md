@@ -48,7 +48,6 @@ Under the following directory (including subdirectories) will watch file changes
 
 Under the following directory (including subdirectories) will ignore file changes under development environment by default:
 
-- ${app_root}/app/views
 - ${app_root}/app/view
 - ${app_root}/app/assets
 - ${app_root}/app/public
