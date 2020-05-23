@@ -41,7 +41,9 @@ module.exports = agent => {
     'app/assets',
     'app/public',
   ].concat(config.ignoreDirs).map(dir => path.join(baseDir, dir));
-
+  
+  watchDirs = watchDirs.concat(config.extraWatchDirs || [])
+  
   // watch dirs to reload worker, will debounce 200ms
   agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
 
