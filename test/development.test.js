@@ -24,7 +24,7 @@ describe('test/development.test.js', () => {
   it('should reload when change service', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/service/a.js');
     await fs.writeFile(filepath, '');
-    await sleep(1000);
+    await sleep(5000);
 
     await fs.unlink(filepath);
     app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
@@ -33,7 +33,7 @@ describe('test/development.test.js', () => {
   it('should not reload when change assets', async () => {
     const filepath = path.join(__dirname, 'fixtures/development/app/assets/b.js');
     await fs.writeFile(filepath, '');
-    await sleep(1000);
+    await sleep(5000);
 
     await fs.unlink(filepath);
     app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));

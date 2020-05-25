@@ -48,7 +48,8 @@
     "autod": "autod"
   },
   "ci": {
-    "version": "8, 9"
+    "version": "8, 10, 12",
+    "type": "travis, github"
   },
   "repository": {
     "type": "git",
