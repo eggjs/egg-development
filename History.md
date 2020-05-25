@@ -1,4 +1,17 @@
 
+2.5.0 / 2020-05-25
+==================
+
+**features**
+  * [[`eaa9222`](http://github.com/eggjs/egg-development/commit/eaa922279c2c3bf55ffd7f394dedd09aa7ef2480)] - feat: support absolute path (#27) (TZ | 天猪 <<atian25@qq.com>>)
+
+**fixes**
+  * [[`b661cad`](http://github.com/eggjs/egg-development/commit/b661cad0251bb580c04ad2b8e7f35b20c765820b)] - fix: incorrect debounce on windows (#28) (hyj1991 <<yeekwanvong@gmail.com>>)
+
+**others**
+  * [[`3652692`](http://github.com/eggjs/egg-development/commit/3652692dfa929040b3e35f05a7b03ae19b2e476b)] - chore: update travis (#25) (TZ | 天猪 <<atian25@qq.com>>)
+  * [[`e5b4aa8`](http://github.com/eggjs/egg-development/commit/e5b4aa88fb1db901ca550fd1db95afd94c596a63)] - docs: update doc (#24) (Miaolegemie <<1942037006@qq.com>>)
+
 2.4.3 / 2019-05-07
 ==================
 
