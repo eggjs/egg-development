@@ -4,6 +4,7 @@ const mm = require('egg-mock');
 const fs = require('mz/fs');
 const path = require('path');
 const sleep = require('mz-modules/sleep');
+const { escape } = require('./utils');
 
 describe('test/not-reload.test.js', () => {
   let app;
@@ -29,7 +30,7 @@ describe('test/not-reload.test.js', () => {
     await sleep(1000);
 
     await fs.unlink(filepath);
-    app.notExpect('stdout', new RegExp(`reload worker because ${filepath} change`));
+    app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath} change`)));
   });
 });
 

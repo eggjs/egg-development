@@ -4,6 +4,7 @@ const mm = require('egg-mock');
 const fs = require('mz/fs');
 const path = require('path');
 const sleep = require('mz-modules/sleep');
+const { escape } = require('./utils');
 
 describe('test/override.test.js', () => {
   let app;
@@ -25,7 +26,7 @@ describe('test/override.test.js', () => {
     await sleep(1000);
 
     await fs.unlink(filepath);
-    app.expect('stdout', new RegExp(`reload worker because ${filepath}`));
+    app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
   });
 
   it('should not reload', async () => {
@@ -35,7 +36,6 @@ describe('test/override.test.js', () => {
     await sleep(1000);
 
     // await fs.unlink(filepath);
-    app.notExpect('stdout', new RegExp(`reload worker because ${filepath} change`));
+    app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath} change`)));
   });
 });
-

@@ -31,7 +31,7 @@
     "egg-ci": "^1.8.0",
     "egg-mock": "^3.14.0",
     "eslint": "^4.17.0",
-    "eslint-config-egg": "^6.0.0",
+    "eslint-config-egg": "^7.0.0",
     "mz": "^2.7.0",
     "mz-modules": "^2.0.0",
     "supertest": "^3.4.2"

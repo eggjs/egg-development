@@ -42,8 +42,18 @@ module.exports = agent => {
     'app/public',
   ].concat(config.ignoreDirs).map(dir => path.join(baseDir, dir));
 
+  const reloadFile = debounce(function(info) {
+    logger.warn(`[agent:development] reload worker because ${info.path} ${info.event}`);
+
+    process.send({
+      to: 'master',
+      action: 'reload-worker',
+    });
+  }, 200);
+
+
   // watch dirs to reload worker, will debounce 200ms
-  agent.watcher.watch(watchDirs, debounce(reloadWorker, 200));
+  agent.watcher.watch(watchDirs, reloadWorker);
 
   /**
    * reload app worker:
@@ -70,12 +80,7 @@ module.exports = agent => {
       return;
     }
 
-    logger.warn(`[agent:development] reload worker because ${info.path} ${info.event}`);
-
-    process.send({
-      to: 'master',
-      action: 'reload-worker',
-    });
+    reloadFile(info);
   }
 
   function isAssetsDir(path) {

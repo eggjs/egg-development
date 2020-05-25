@@ -4,6 +4,7 @@ const mm = require('egg-mock');
 const fs = require('mz/fs');
 const path = require('path');
 const sleep = require('mz-modules/sleep');
+const { escape } = require('./utils');
 
 describe('test/custom.test.js', () => {
   let app;
@@ -27,13 +28,13 @@ describe('test/custom.test.js', () => {
     await sleep(1000);
 
     await fs.unlink(filepath);
-    app.expect('stdout', new RegExp(`reload worker because ${filepath}`));
+    app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
 
     filepath = path.join(__dirname, 'fixtures/custom/app/service/b.ts');
     await fs.writeFile(filepath, '');
     await sleep(1000);
 
     await fs.unlink(filepath);
-    app.notExpect('stdout', new RegExp(`reload worker because ${filepath}`));
+    app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
   });
 });
