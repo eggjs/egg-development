@@ -1,4 +1,10 @@
 
+2.6.0 / 2020-08-19
+==================
+
+**features**
+  * [[`2750b52`](http://github.com/eggjs/egg-development/commit/2750b525bba30d88e94bf622f22cfc4389cdcda5)] - feat: ignore app/web by default (#29) (TZ | 天猪 <<atian25@qq.com>>)
+
 2.5.0 / 2020-05-25
 ==================
 
