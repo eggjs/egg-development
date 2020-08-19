@@ -40,6 +40,7 @@ module.exports = agent => {
     'app/view',
     'app/assets',
     'app/public',
+    'app/web',
   ].concat(config.ignoreDirs).map(dir => path.resolve(baseDir, dir));
 
   const reloadFile = debounce(function(info) {
