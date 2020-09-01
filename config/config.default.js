@@ -7,6 +7,7 @@
  * @property {Boolean} fastReady - don't wait all plugins ready, default is false.
  * @property {Boolean} reloadOnDebug - whether reload on debug, default is true.
  * @property {Boolean} overrideDefault - whether override default watchDirs, default is false.
+ * @property {Boolean} overrideIgnore - whether override default ignoreDirs, default is false.
  * @property {Array|String} reloadPattern - whether to reload, use https://github.com/sindresorhus/multimatch
  */
 exports.development = {
@@ -15,5 +16,6 @@ exports.development = {
   fastReady: false,
   reloadOnDebug: true,
   overrideDefault: false,
+  overrideIgnore: false,
   reloadPattern: undefined,
 };

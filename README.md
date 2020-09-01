@@ -51,6 +51,9 @@ Under the following directory (including subdirectories) will ignore file change
 - ${app_root}/app/view
 - ${app_root}/app/assets
 - ${app_root}/app/public
+- ${app_root}/app/web
+
+> set `config.development.overrideIgnore` to `true` to skip defaults merge.
 
 Developer can use `config.reloadPattern`([multimatch](https://github.com/sindresorhus/multimatch)) to control whether to reload.
 
