@@ -1,4 +1,10 @@
 
+2.7.0 / 2020-09-01
+==================
+
+**features**
+  * [[`45a653c`](http://github.com/eggjs/egg-development/commit/45a653c32188eb82d3532ce4cc833094a228c85a)] - feat: overrideIgnore (#30) (TZ | 天猪 <<atian25@qq.com>>)
+
 2.6.0 / 2020-08-19
 ==================
 
