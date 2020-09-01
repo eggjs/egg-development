@@ -35,13 +35,15 @@ module.exports = agent => {
 
   watchDirs = watchDirs.concat(config.watchDirs).map(dir => path.resolve(baseDir, dir));
 
-  const ignoreReloadFileDirs = [
+  let ignoreReloadFileDirs = config.overrideIgnore ? [] : [
     'app/views',
     'app/view',
     'app/assets',
     'app/public',
     'app/web',
-  ].concat(config.ignoreDirs).map(dir => path.resolve(baseDir, dir));
+  ];
+
+  ignoreReloadFileDirs = ignoreReloadFileDirs.concat(config.ignoreDirs).map(dir => path.resolve(baseDir, dir));
 
   const reloadFile = debounce(function(info) {
     logger.warn(`[agent:development] reload worker because ${info.path} ${info.event}`);
