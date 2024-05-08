@@ -1,9 +1,8 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const { setTimeout: sleep } = require('node:timers/promises');
 const assert = require('node:assert');
 const mm = require('egg-mock');
-const { escape } = require('./utils');
+const { escape, sleep } = require('./utils');
 
 describe('test/development.test.js', () => {
   let app;

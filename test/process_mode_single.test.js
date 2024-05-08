@@ -1,9 +1,9 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const assert = require('node:assert');
-const { setTimeout: sleep } = require('node:timers/promises');
 const request = require('supertest');
 const mm = require('egg-mock');
+const { sleep } = require('./utils');
 
 describe('test/process_mode_single.test.js', () => {
   let app;

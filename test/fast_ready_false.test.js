@@ -1,5 +1,5 @@
-const { setTimeout: sleep } = require('node:timers/promises');
 const mm = require('egg-mock');
+const { sleep } = require('./utils');
 
 describe('fastReady = false', () => {
   let app;

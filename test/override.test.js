@@ -1,8 +1,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const { setTimeout: sleep } = require('node:timers/promises');
 const mm = require('egg-mock');
-const { escape } = require('./utils');
+const { escape, sleep } = require('./utils');
 
 describe('test/override.test.js', () => {
   let app;
