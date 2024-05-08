@@ -1,18 +1,16 @@
-'use strict';
-
+const fs = require('node:fs/promises');
+const path = require('node:path');
 const mm = require('egg-mock');
-const fs = require('mz/fs');
-const path = require('path');
-const { rimraf, mkdirp, sleep } = require('mz-modules');
+const { sleep } = require('./utils');
 
 describe('test/absolute.test.js', () => {
   let app;
   before(async () => {
-    await rimraf(path.join(__dirname, 'fixtures/absolute/lib'));
+    await fs.rm(path.join(__dirname, 'fixtures/absolute/lib'), { force: true, recursive: true });
 
     // FIXME: ONLY WATCH EXIST DIR
     const filepath = path.join(__dirname, 'fixtures/absolute/lib/a/b.js');
-    await mkdirp(path.dirname(filepath));
+    await fs.mkdir(path.dirname(filepath), { recursive: true });
     await fs.writeFile(filepath, '');
 
     mm.env('local');
@@ -29,7 +27,7 @@ describe('test/absolute.test.js', () => {
 
   it('should reload at absolute path', async () => {
     const filepath = path.join(__dirname, 'fixtures/absolute/lib/a/b.js');
-    await mkdirp(path.dirname(filepath));
+    await fs.mkdir(path.dirname(filepath), { recursive: true });
     console.log(`write file to ${filepath}`);
     await fs.writeFile(filepath, 'console.log(1);');
     await sleep(5000);

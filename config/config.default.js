@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * @member Config#development
  * @property {Array} watchDirs - dirs needed watch, when files under these change, application will reload, use relative path

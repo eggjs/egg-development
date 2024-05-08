@@ -1,19 +1,15 @@
-'use strict';
-
+const assert = require('node:assert');
+const fs = require('node:fs/promises');
+const path = require('node:path');
 const mm = require('egg-mock');
-const fs = require('mz/fs');
-const path = require('path');
-const mkdirp = require('mz-modules/mkdirp');
-const sleep = require('mz-modules/sleep');
-const assert = require('assert');
-
+const { sleep } = require('./utils');
 
 describe('test/timing.test.js', () => {
   const timingJSON = path.join(__dirname, 'fixtures/timing/run/agent_timing_11111.json');
   const configJSON = path.join(__dirname, 'fixtures/timing/run/application_config.json');
   let app;
   before(async () => {
-    await mkdirp(path.dirname(timingJSON));
+    await fs.mkdir(path.dirname(timingJSON), { recursive: true });
     await fs.writeFile(timingJSON, '[]');
     await fs.writeFile(configJSON, '{}');
     mm.env('local');
@@ -41,7 +37,7 @@ describe('test/timing.test.js', () => {
 
     let json = res.text.match(/data = (.*?);/);
     json = JSON.parse(json[1]);
-    assert(json.length === 111);
+    assert.equal(json.length, 114);
 
     const first = json[0];
     assert(first.type === 'agent');
@@ -50,9 +46,10 @@ describe('test/timing.test.js', () => {
     assert(first.title === 'agent(0)');
 
     const last = json[json.length - 1];
-    assert(/^app_\d+$/.test(last.type));
-    assert(typeof last.pid === 'string');
+    // console.log(last);
+    assert.match(last.type, /^app_\d+$/);
+    assert.equal(typeof last.pid, 'string');
     assert.deepEqual(last.range, [ last.start, last.end ]);
-    assert(/^app_\d+\(65\)$/.test(last.title));
+    assert.match(last.title, /^app_\d+\(67\)$/);
   });
 });

@@ -1,7 +1,5 @@
-'use strict';
-
 const mm = require('egg-mock');
-const sleep = require('mz-modules/sleep');
+const { sleep } = require('./utils');
 
 describe('fastReady = false', () => {
   let app;

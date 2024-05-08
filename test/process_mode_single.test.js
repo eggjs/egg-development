@@ -1,11 +1,9 @@
-'use strict';
-
-const fs = require('mz/fs');
-const path = require('path');
-const sleep = require('mz-modules/sleep');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const assert = require('node:assert');
 const request = require('supertest');
 const mm = require('egg-mock');
-const assert = require('assert');
+const { sleep } = require('./utils');
 
 describe('test/process_mode_single.test.js', () => {
   let app;

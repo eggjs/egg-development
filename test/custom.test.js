@@ -1,10 +1,7 @@
-'use strict';
-
+const fs = require('fs/promises');
+const path = require('node:path');
 const mm = require('egg-mock');
-const fs = require('mz/fs');
-const path = require('path');
-const sleep = require('mz-modules/sleep');
-const { escape } = require('./utils');
+const { escape, sleep } = require('./utils');
 
 describe('test/custom.test.js', () => {
   let app;
