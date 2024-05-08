@@ -1,19 +1,15 @@
-'use strict';
-
+const assert = require('node:assert');
+const fs = require('node:fs/promises');
+const path = require('node:path');
+const { setTimeout: sleep } = require('node:timers/promises');
 const mm = require('egg-mock');
-const fs = require('mz/fs');
-const path = require('path');
-const mkdirp = require('mz-modules/mkdirp');
-const sleep = require('mz-modules/sleep');
-const assert = require('assert');
-
 
 describe('test/timing.test.js', () => {
   const timingJSON = path.join(__dirname, 'fixtures/timing/run/agent_timing_11111.json');
   const configJSON = path.join(__dirname, 'fixtures/timing/run/application_config.json');
   let app;
   before(async () => {
-    await mkdirp(path.dirname(timingJSON));
+    await fs.mkdir(path.dirname(timingJSON), { recursive: true });
     await fs.writeFile(timingJSON, '[]');
     await fs.writeFile(configJSON, '{}');
     mm.env('local');

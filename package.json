@@ -19,37 +19,26 @@
   ],
   "dependencies": {
     "debounce": "^1.1.0",
-    "multimatch": "^2.1.0",
-    "mz": "^2.7.0",
-    "mz-modules": "^2.1.0",
-    "utility": "^1.13.1"
+    "multimatch": "^5.0.0",
+    "utility": "^2.1.0"
   },
   "devDependencies": {
-    "autod": "^3.0.1",
-    "egg": "^2.3.0",
-    "egg-bin": "^4.3.7",
-    "egg-ci": "^1.8.0",
-    "egg-mock": "^3.14.0",
-    "eslint": "^4.17.0",
-    "eslint-config-egg": "^7.0.0",
-    "mz": "^2.7.0",
-    "mz-modules": "^2.0.0",
+    "egg": "3",
+    "egg-bin": "6",
+    "egg-mock": "5",
+    "eslint": "8",
+    "eslint-config-egg": "12",
     "supertest": "^3.4.2"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
-    "test": "npm run lint -- --fix && egg-bin pkgfiles && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test --ts false",
+    "cov": "egg-bin cov --ts false",
     "lint": "eslint .",
-    "ci": "npm run lint && egg-bin pkgfiles --check && npm run cov",
-    "autod": "autod"
-  },
-  "ci": {
-    "version": "8, 10, 12",
-    "type": "travis, github"
+    "ci": "npm run lint && npm run cov"
   },
   "repository": {
     "type": "git",

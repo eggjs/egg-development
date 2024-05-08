@@ -1,9 +1,7 @@
-'use strict';
-
+const fs = require('fs/promises');
+const path = require('node:path');
+const { setTimeout: sleep } = require('node:timers/promises');
 const mm = require('egg-mock');
-const fs = require('mz/fs');
-const path = require('path');
-const sleep = require('mz-modules/sleep');
 const { escape } = require('./utils');
 
 describe('test/custom.test.js', () => {

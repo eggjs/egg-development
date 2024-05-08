@@ -1,11 +1,7 @@
-'use strict';
-
-const path = require('path');
+const path = require('node:path');
+const fs = require('node:fs/promises');
 const debounce = require('debounce');
 const multimatch = require('multimatch');
-const rimraf = require('mz-modules/rimraf');
-const fs = require('mz/fs');
-
 
 module.exports = agent => {
   // clean all timing json
@@ -14,7 +10,7 @@ module.exports = agent => {
     const files = await fs.readdir(rundir);
     for (const file of files) {
       if (!/^(agent|application)_timing/.test(file)) continue;
-      await rimraf(path.join(agent.config.rundir, file));
+      await fs.rm(path.join(agent.config.rundir, file), { force: true, recursive: true });
     }
   });
 

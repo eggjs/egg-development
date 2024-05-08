@@ -1,7 +1,5 @@
-'use strict';
-
+const { setTimeout: sleep } = require('node:timers/promises');
 const mm = require('egg-mock');
-const sleep = require('mz-modules/sleep');
 
 describe('fastReady = false', () => {
   let app;

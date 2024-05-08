@@ -1,8 +1,6 @@
-'use strict';
-
-const path = require('path');
-const fs = require('mz/fs');
-const utility = require('utility');
+const path = require('node:path');
+const fs = require('node:fs/promises');
+const { readJSON } = require('utility');
 
 module.exports = (_, app) => {
   return async (ctx, next) => {
@@ -19,7 +17,7 @@ async function loadTimingData(app) {
   const data = [];
   for (const file of files) {
     if (!/^(agent|application)_timing/.test(file)) continue;
-    const json = await utility.readJSON(path.join(rundir, file));
+    const json = await readJSON(path.join(rundir, file));
     const isAgent = /^agent/.test(file);
     for (const item of json) {
       if (isAgent) {
