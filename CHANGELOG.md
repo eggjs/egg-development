@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.2](https://github.com/eggjs/egg-development/compare/v3.0.1...v3.0.2) (2024-12-22)
+
+
+### Bug Fixes
+
+* check run dir exists before read it ([#33](https://github.com/eggjs/egg-development/issues/33)) ([d95db72](https://github.com/eggjs/egg-development/commit/d95db72ecb2b24c4cce33654fa533f4901dc3896))
+
 ## [3.0.1](https://github.com/eggjs/egg-development/compare/v3.0.0...v3.0.1) (2024-12-22)
 
 
