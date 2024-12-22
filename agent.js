@@ -2,12 +2,13 @@ const path = require('node:path');
 const fs = require('node:fs/promises');
 const debounce = require('debounce');
 const multimatch = require('multimatch');
+const { exists } = require('utility');
 
 module.exports = agent => {
   // clean all timing json
   agent.beforeStart(async () => {
     const rundir = agent.config.rundir;
-    const stat = await fs.stat(rundir, { throwIfNoEntry: false });
+    const stat = await exists(rundir);
     if (!stat) return;
     const files = await fs.readdir(rundir);
     for (const file of files) {
