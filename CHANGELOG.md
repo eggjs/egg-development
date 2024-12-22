@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.0.1](https://github.com/eggjs/egg-development/compare/v3.0.0...v3.0.1) (2024-12-22)
+
+
+### Bug Fixes
+
+* skip read run dir when it not exists ([#32](https://github.com/eggjs/egg-development/issues/32)) ([2d24ce3](https://github.com/eggjs/egg-development/commit/2d24ce320eaf1c36601f9703f8d2a4635b636167))
+
 ## [3.0.0](https://github.com/eggjs/egg-development/compare/v2.7.0...v3.0.0) (2024-05-08)
 
 
@@ -160,6 +167,4 @@ compatibility and security.
 
 0.1.0 / 2016-09-13
 ==================
-  * feat: debounce reload && docs (#1) 
-
-
+  * feat: debounce reload && docs (#1)
