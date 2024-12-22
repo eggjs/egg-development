@@ -7,6 +7,8 @@ module.exports = agent => {
   // clean all timing json
   agent.beforeStart(async () => {
     const rundir = agent.config.rundir;
+    const stat = await fs.stat(rundir, { throwIfNoEntry: false });
+    if (!stat) return;
     const files = await fs.readdir(rundir);
     for (const file of files) {
       if (!/^(agent|application)_timing/.test(file)) continue;

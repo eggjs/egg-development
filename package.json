@@ -20,9 +20,10 @@
   "dependencies": {
     "debounce": "^1.1.0",
     "multimatch": "^5.0.0",
-    "utility": "^2.1.0"
+    "utility": "^2.3.0"
   },
   "devDependencies": {
+    "@types/node": "^22.10.2",
     "egg": "3",
     "egg-bin": "6",
     "egg-mock": "5",
