@@ -1,6 +1,9 @@
 {
-  "name": "egg-development",
+  "name": "@eggjs/development",
   "version": "3.0.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "development tool for egg",
   "eggPlugin": {
     "name": "development",
@@ -9,7 +12,12 @@
     ],
     "dependencies": [
       "watcher"
-    ]
+    ],
+    "exports": {
+      "import": "./dist/esm",
+      "require": "./dist/commonjs",
+      "typescript": "./src"
+    }
   },
   "keywords": [
     "egg",
@@ -18,42 +26,72 @@
     "eggPlugin"
   ],
   "dependencies": {
-    "debounce": "^1.1.0",
+    "@eggjs/core": "^6.2.11",
+    "debounce": "^2.2.0",
     "multimatch": "^5.0.0",
     "utility": "^2.4.0"
   },
   "devDependencies": {
-    "@types/node": "^22.10.2",
-    "egg": "3",
-    "egg-bin": "6",
-    "egg-mock": "5",
+    "@arethetypeswrong/cli": "^0.17.2",
+    "@eggjs/bin": "7",
+    "@eggjs/mock": "6",
+    "@eggjs/supertest": "8",
+    "@eggjs/tsconfig": "1",
+    "@types/mocha": "10",
+    "@types/node": "22",
+    "egg": "beta",
     "eslint": "8",
-    "eslint-config-egg": "12",
-    "supertest": "^3.4.2"
+    "eslint-config-egg": "14",
+    "rimraf": "^6.0.1",
+    "tshy": "3",
+    "tshy-after": "1",
+    "typescript": "5"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.19.0"
   },
   "scripts": {
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test --ts false",
-    "cov": "egg-bin cov --ts false",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov"
+    "lint": "eslint --cache src test --ext .ts",
+    "pretest": "npm run clean && npm run lint -- --fix",
+    "test": "egg-bin test",
+    "preci": "npm run clean &&  npm run lint",
+    "ci": "egg-bin cov",
+    "postci": "npm run prepublishOnly && npm run clean",
+    "clean": "rimraf dist",
+    "prepublishOnly": "tshy && tshy-after && attw --pack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-development.git"
+    "url": "git+https://github.com/eggjs/development.git"
+  },
+  "bugs": "https://github.com/eggjs/egg/issues",
+  "homepage": "https://github.com/eggjs/development#readme",
+  "author": "jtyjty99999",
+  "license": "MIT",
+  "type": "module",
+  "tshy": {
+    "exports": {
+      ".": "./src/index.ts",
+      "./package.json": "./package.json"
+    }
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "app",
-    "config",
-    "lib",
-    "agent.js",
-    "app.js"
+    "dist",
+    "src"
   ],
-  "bugs": "https://github.com/eggjs/egg/issues",
-  "homepage": "https://github.com/eggjs/egg-development#readme",
-  "author": "jtyjty99999",
-  "license": "MIT"
+  "types": "./dist/commonjs/index.d.ts",
+  "main": "./dist/commonjs/index.js"
 }
