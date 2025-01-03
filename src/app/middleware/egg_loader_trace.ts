@@ -1,20 +1,23 @@
-const path = require('node:path');
-const fs = require('node:fs/promises');
-const { readJSON } = require('utility');
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import { readJSON } from 'utility';
+import type { EggCore, MiddlewareFunc } from '@eggjs/core';
 
-module.exports = (_, app) => {
+export default (_: unknown, app: EggCore): MiddlewareFunc => {
   return async (ctx, next) => {
-    if (ctx.path !== '/__loader_trace__') return await next();
+    if (ctx.path !== '/__loader_trace__') {
+      return await next();
+    }
     const template = await fs.readFile(path.join(__dirname, '../../lib/loader_trace.html'), 'utf8');
     const data = await loadTimingData(app);
     ctx.body = template.replace('{{placeholder}}', JSON.stringify(data));
   };
 };
 
-async function loadTimingData(app) {
+async function loadTimingData(app: EggCore) {
   const rundir = app.config.rundir;
   const files = await fs.readdir(rundir);
-  const data = [];
+  const data: any[] = [];
   for (const file of files) {
     if (!/^(agent|application)_timing/.test(file)) continue;
     const json = await readJSON(path.join(rundir, file));

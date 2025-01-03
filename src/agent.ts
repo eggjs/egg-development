@@ -1,8 +1,8 @@
-const path = require('node:path');
-const fs = require('node:fs/promises');
-const debounce = require('debounce');
-const multimatch = require('multimatch');
-const { exists } = require('utility');
+import path from 'node:path';
+import fs from 'node:fs/promises';
+import debounce from 'debounce';
+import multimatch from 'multimatch';
+import { exists } from 'utility';
 
 module.exports = agent => {
   // clean all timing json
