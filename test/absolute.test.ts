@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { scheduler } from 'node:timers/promises';
 import { mm, MockApplication } from '@eggjs/mock';
-import { getFilepath, DELAY } from './utils.js';
+import { getFilepath } from './utils.js';
 
 describe('test/absolute.test.ts', () => {
   let app: MockApplication;
@@ -31,9 +31,9 @@ describe('test/absolute.test.ts', () => {
     await fs.mkdir(path.dirname(filepath), { recursive: true });
     console.log(`write file to ${filepath}`);
     await fs.writeFile(filepath, 'console.log(1);');
-    await scheduler.wait(DELAY);
-
+    await scheduler.wait(1000);
     await fs.unlink(filepath);
+    await scheduler.wait(5000);
     app.expect('stdout', /reload worker because .*?b\.js/);
   });
 

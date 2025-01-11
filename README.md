@@ -19,7 +19,11 @@
 
 This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
 
-`egg-development` has been built-in for egg. It is enabled by default.
+`@eggjs/development` has been built-in for egg. It is enabled by default.
+
+## Requirements
+
+- egg >= 4.x
 
 ## Configuration
 
