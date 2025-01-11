@@ -9,7 +9,7 @@ export default (_: unknown, app: EggCore): MiddlewareFunc => {
     if (ctx.path !== '/__loader_trace__') {
       return await next();
     }
-    const template = await fs.readFile(getSourceFile('lib/loader_trace.html'), 'utf8');
+    const template = await fs.readFile(getSourceFile('config/loader_trace.html'), 'utf8');
     const data = await loadTimingData(app);
     ctx.body = template.replace('{{placeholder}}', JSON.stringify(data));
   };
