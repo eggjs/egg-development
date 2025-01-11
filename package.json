@@ -43,7 +43,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/eggjs/egg-development.git"
+    "url": "git+https://github.com/eggjs/development.git"
   },
   "files": [
     "app",
@@ -53,7 +53,7 @@
     "app.js"
   ],
   "bugs": "https://github.com/eggjs/egg/issues",
-  "homepage": "https://github.com/eggjs/egg-development#readme",
+  "homepage": "https://github.com/eggjs/development#readme",
   "author": "jtyjty99999",
   "license": "MIT"
 }

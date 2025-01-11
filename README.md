@@ -1,7 +1,7 @@
 # egg-development
 
 [![NPM version][npm-image]][npm-url]
-[![Node.js CI](https://github.com/eggjs/egg-development/actions/workflows/nodejs.yml/badge.svg)](https://github.com/eggjs/egg-development/actions/workflows/nodejs.yml)
+[![CI](https://github.com/eggjs/development/actions/workflows/nodejs.yml/badge.svg?branch=2.x)](https://github.com/eggjs/development/actions/workflows/nodejs.yml)
 [![Test coverage][codecov-image]][codecov-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
@@ -10,7 +10,7 @@
 [npm-image]: https://img.shields.io/npm/v/egg-development.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-development
 [codecov-image]: https://img.shields.io/codecov/c/github/eggjs/egg-development.svg?style=flat-square
-[codecov-url]: https://codecov.io/github/eggjs/egg-development?branch=master
+[codecov-url]: https://codecov.io/github/eggjs/development?branch=3.x
 [snyk-image]: https://snyk.io/test/npm/egg-development/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-development
 [download-image]: https://img.shields.io/npm/dm/egg-development.svg?style=flat-square
@@ -22,7 +22,7 @@ This is an egg plugin for local development, under development environment enabl
 
 ## Configuration
 
-see [config/config.default.js](https://github.com/eggjs/egg-development/blob/master/config/config.default.js) for more detail.
+see [config/config.default.js](https://github.com/eggjs/development/blob/3.x/config/config.default.js) for more detail.
 
 ## Features
 
@@ -75,6 +75,6 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=eggjs/egg-development)](https://github.com/eggjs/egg-development/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=eggjs/development)](https://github.com/eggjs/development/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).

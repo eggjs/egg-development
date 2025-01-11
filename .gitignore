@@ -4,3 +4,4 @@ node_modules/
 coverage/
 test/fixtures/**/run
 .DS_Store
+package-lock.json
