@@ -21,18 +21,18 @@ describe('test/development-ts.test.ts', () => {
   it('should reload when change service', async () => {
     const filepath = getFilepath('development-ts/app/service/a.ts');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(DELAY);
-
+    await scheduler.wait(1000);
     await fs.unlink(filepath);
+    await scheduler.wait(5000);
     app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
   });
 
   it('should not reload when change assets', async () => {
     const filepath = getFilepath('development-ts/app/assets/b.js');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(DELAY);
-
+    await scheduler.wait(1000);
     await fs.unlink(filepath);
+    await scheduler.wait(5000);
     app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
   });
 
