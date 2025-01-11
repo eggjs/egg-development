@@ -3,8 +3,8 @@ import fs from 'node:fs/promises';
 import { strict as assert } from 'node:assert';
 import { scheduler } from 'node:timers/promises';
 import { mm } from '@eggjs/mock';
-import { getFilepath } from './utils.js';
 import { start, Application } from 'egg';
+import { getFilepath } from './utils.js';
 
 describe('test/process_mode_single.test.ts', () => {
   let app: Application;

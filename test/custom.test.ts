@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { scheduler } from 'node:timers/promises';
 import { mm, MockApplication } from '@eggjs/mock';
-import { getFilepath } from './utils.js';
+import { getFilepath, DELAY } from './utils.js';
 
 describe('test/custom.test.ts', () => {
   let app: MockApplication;
@@ -22,14 +22,14 @@ describe('test/custom.test.ts', () => {
     let filepath;
     filepath = getFilepath('custom/app/service/a.js');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(5000);
+    await scheduler.wait(DELAY);
 
     await fs.unlink(filepath);
     app.expect('stdout', /a\.js/);
 
     filepath = getFilepath('custom/app/service/b.ts');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(5000);
+    await scheduler.wait(DELAY);
 
     await fs.unlink(filepath);
     app.notExpect('stdout', /b\.ts/);

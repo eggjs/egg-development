@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import { strict as assert } from 'node:assert';
 import { scheduler } from 'node:timers/promises';
 import { mm, MockApplication } from '@eggjs/mock';
-import { escape, getFilepath } from './utils.js';
+import { escape, getFilepath, DELAY } from './utils.js';
 
 describe('test/development-ts.test.ts', () => {
   let app: MockApplication;
@@ -21,7 +21,7 @@ describe('test/development-ts.test.ts', () => {
   it('should reload when change service', async () => {
     const filepath = getFilepath('development-ts/app/service/a.ts');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(15000);
+    await scheduler.wait(DELAY);
 
     await fs.unlink(filepath);
     app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
@@ -30,7 +30,7 @@ describe('test/development-ts.test.ts', () => {
   it('should not reload when change assets', async () => {
     const filepath = getFilepath('development-ts/app/assets/b.js');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(15000);
+    await scheduler.wait(DELAY);
 
     await fs.unlink(filepath);
     app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
@@ -41,10 +41,10 @@ describe('test/development-ts.test.ts', () => {
     const filepath1 = getFilepath('development-ts/app/service/d.js');
     await fs.writeFile(filepath, '');
     // set a timeout for watcher's interval
-    await scheduler.wait(5000);
+    await scheduler.wait(DELAY);
     await fs.writeFile(filepath1, '');
 
-    await scheduler.wait(5000);
+    await scheduler.wait(DELAY);
     await fs.unlink(filepath);
     await fs.unlink(filepath1);
 

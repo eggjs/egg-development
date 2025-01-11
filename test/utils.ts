@@ -13,3 +13,5 @@ export function escape(str: string) {
     .replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
     .replace(/-/g, '\\x2d');
 }
+
+export const DELAY = process.env.CI ? 30000 : 5000;
