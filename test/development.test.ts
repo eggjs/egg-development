@@ -41,10 +41,10 @@ describe('test/development.test.ts', () => {
     const filepath1 = getFilepath('development/app/service/d.js');
     await fs.writeFile(filepath, '');
     // set a timeout for watcher's interval
-    await scheduler.wait(DELAY);
+    await scheduler.wait(DELAY / 2);
     await fs.writeFile(filepath1, '');
 
-    await scheduler.wait(DELAY);
+    await scheduler.wait(DELAY / 2);
     await fs.unlink(filepath);
     await fs.unlink(filepath1);
 

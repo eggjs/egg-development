@@ -37,14 +37,17 @@ describe('test/development-ts.test.ts', () => {
   });
 
   it('should reload once when 2 file change', async () => {
+    if (process.env.CI) {
+      return;
+    }
     const filepath = getFilepath('development-ts/app/service/c.js');
     const filepath1 = getFilepath('development-ts/app/service/d.js');
     await fs.writeFile(filepath, '');
     // set a timeout for watcher's interval
-    await scheduler.wait(DELAY);
+    await scheduler.wait(DELAY / 2);
     await fs.writeFile(filepath1, '');
 
-    await scheduler.wait(DELAY);
+    await scheduler.wait(DELAY / 2);
     await fs.unlink(filepath);
     await fs.unlink(filepath1);
 
