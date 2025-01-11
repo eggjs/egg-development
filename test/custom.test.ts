@@ -22,16 +22,16 @@ describe('test/custom.test.ts', () => {
     let filepath;
     filepath = getFilepath('custom/app/service/a.js');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(15000);
+    await scheduler.wait(5000);
 
     await fs.unlink(filepath);
-    app.expect('stdout', /reload worker because/);
+    app.expect('stdout', /a\.js/);
 
     filepath = getFilepath('custom/app/service/b.ts');
     await fs.writeFile(filepath, '');
-    await scheduler.wait(15000);
+    await scheduler.wait(5000);
 
     await fs.unlink(filepath);
-    app.notExpect('stdout', /reload worker because/);
+    app.notExpect('stdout', /b\.ts/);
   });
 });

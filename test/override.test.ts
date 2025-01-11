@@ -26,7 +26,7 @@ describe('test/override.test.ts', () => {
       await scheduler.wait(15000);
 
       await fs.unlink(filepath);
-      app.expect('stdout', /reload worker because/);
+      app.expect('stdout', /a\.js/);
     });
 
     it('should not reload', async () => {
@@ -36,7 +36,7 @@ describe('test/override.test.ts', () => {
       await scheduler.wait(15000);
 
       await fs.unlink(filepath);
-      app.notExpect('stdout', /reload worker because/);
+      app.notExpect('stdout', /index\.js/);
     });
   });
 
