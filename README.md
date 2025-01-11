@@ -1,4 +1,4 @@
-# egg-development
+# @eggjs/development
 
 [![NPM version][npm-image]][npm-url]
 [![Node.js CI](https://github.com/eggjs/egg-development/actions/workflows/nodejs.yml/badge.svg)](https://github.com/eggjs/egg-development/actions/workflows/nodejs.yml)
@@ -6,6 +6,7 @@
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 [![Node.js Version](https://img.shields.io/node/v/egg-development.svg?style=flat)](https://nodejs.org/en/download/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
 [npm-image]: https://img.shields.io/npm/v/egg-development.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-development
@@ -18,11 +19,15 @@
 
 This is an egg plugin for local development, under development environment enabled by default, and closed under other environment.
 
-`egg-development` has been built-in for egg. It is enabled by default.
+`@eggjs/development` has been built-in for egg. It is enabled by default.
+
+## Requirements
+
+- egg >= 4.x
 
 ## Configuration
 
-see [config/config.default.js](https://github.com/eggjs/egg-development/blob/master/config/config.default.js) for more detail.
+see [config/config.default.ts](https://github.com/eggjs/egg-development/blob/master/src/config/config.default.ts) for more detail.
 
 ## Features
 
@@ -52,12 +57,14 @@ Under the following directory (including subdirectories) will ignore file change
 
 Developer can use `config.reloadPattern`([multimatch](https://github.com/sindresorhus/multimatch)) to control whether to reload.
 
-```js
-// config/config.default.js
-exports.development = {
-  // don't reload when ts fileChanged
-  // https://github.com/sindresorhus/multimatch
-  reloadPattern: ['**', '!**/*.ts'],
+```ts
+// config/config.default.ts
+export default = {
+  development: {
+    // don't reload when css fileChanged
+    // https://github.com/sindresorhus/multimatch
+    reloadPattern: ['**', '!**/*.css'],
+  },
 };
 ```
 
@@ -75,6 +82,6 @@ Please open an issue [here](https://github.com/eggjs/egg/issues).
 
 ## Contributors
 
-[![Contributors](https://contrib.rocks/image?repo=eggjs/egg-development)](https://github.com/eggjs/egg-development/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=eggjs/development)](https://github.com/eggjs/development/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).

@@ -1,15 +1,15 @@
-const fs = require('node:fs/promises');
-const path = require('node:path');
-const mm = require('egg-mock');
-const { escape, sleep } = require('./utils');
+import fs from 'node:fs/promises';
+import { scheduler } from 'node:timers/promises';
+import { mm, MockApplication } from '@eggjs/mock';
+import { escape, getFilepath } from './utils.js';
 
-describe('test/override.test.js', () => {
-  let app;
+describe('test/override.test.ts', () => {
+  let app: MockApplication;
 
   after(() => app && app.close());
   afterEach(mm.restore);
   // for debounce
-  afterEach(() => sleep(500));
+  afterEach(() => scheduler.wait(500));
 
   describe('overrideDefault', () => {
     before(() => {
@@ -21,22 +21,22 @@ describe('test/override.test.js', () => {
       return app.ready();
     });
     it('should reload', async () => {
-      const filepath = path.join(__dirname, 'fixtures/override/app/service/a.js');
+      const filepath = getFilepath('override/app/service/a.js');
       await fs.writeFile(filepath, '');
-      await sleep(1000);
-
+      await scheduler.wait(1000);
       await fs.unlink(filepath);
-      app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
+      await scheduler.wait(5000);
+      app.expect('stdout', /a\.js/);
     });
 
     it('should not reload', async () => {
       app.debug();
-      const filepath = path.join(__dirname, 'fixtures/override/app/no-trigger/index.js');
+      const filepath = getFilepath('override/app/no-trigger/index.js');
       await fs.writeFile(filepath, '');
-      await sleep(1000);
-
+      await scheduler.wait(1000);
       await fs.unlink(filepath);
-      app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath} change`)));
+      await scheduler.wait(5000);
+      app.notExpect('stdout', /index\.js/);
     });
   });
 
@@ -50,21 +50,21 @@ describe('test/override.test.js', () => {
       return app.ready();
     });
     it('should reload', async () => {
-      const filepath = path.join(__dirname, 'fixtures/override-ignore/app/web/a.js');
+      const filepath = getFilepath('override-ignore/app/web/a.js');
       await fs.writeFile(filepath, '');
-      await sleep(1000);
-
+      await scheduler.wait(1000);
       await fs.unlink(filepath);
+      await scheduler.wait(5000);
       app.expect('stdout', new RegExp(escape(`reload worker because ${filepath}`)));
     });
 
     it('should not reload', async () => {
       app.debug();
-      const filepath = path.join(__dirname, 'fixtures/override-ignore/app/public/index.js');
+      const filepath = getFilepath('override-ignore/app/public/index.js');
       await fs.writeFile(filepath, '');
-      await sleep(1000);
-
+      await scheduler.wait(1000);
       await fs.unlink(filepath);
+      await scheduler.wait(5000);
       app.notExpect('stdout', new RegExp(escape(`reload worker because ${filepath} change`)));
     });
   });

@@ -4,3 +4,8 @@ node_modules/
 coverage/
 test/fixtures/**/run
 .DS_Store
+.tshy*
+.eslintcache
+dist
+package-lock.json
+.package-lock.json
