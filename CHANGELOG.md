@@ -1,5 +1,56 @@
 # Changelog
 
+## [4.0.0](https://github.com/eggjs/development/compare/v3.0.2...v4.0.0) (2025-01-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop Node.js < 18.19.0 support
+
+part of https://github.com/eggjs/egg/issues/3644
+
+https://github.com/eggjs/egg/issues/5257
+
+<!-- This is an auto-generated comment: release notes by coderabbit.ai
+-->
+
+## Summary by CodeRabbit
+
+Based on the comprehensive changes, here are the release notes:
+
+## Release Notes for @eggjs/development
+
+- **New Features**
+	- Added TypeScript support for development environment
+	- Enhanced file watching and reloading mechanisms
+	- Improved configuration options for development mode
+
+- **Breaking Changes**
+	- Migrated from `egg-development` to `@eggjs/development`
+	- Requires Node.js version >=18.19.0
+	- Dropped support for Node.js 14 and 16
+
+- **Improvements**
+	- Refined ESLint configuration
+	- Updated GitHub Actions workflow to focus on macOS testing
+	- Added more robust file change detection
+	- Enhanced type safety across the project
+
+- **Bug Fixes**
+	- Improved handling of file reloading in different scenarios
+	- Fixed potential issues with asset and service file monitoring
+
+- **Chores**
+	- Updated dependencies
+	- Migrated test suite to TypeScript
+	- Restructured project configuration
+
+<!-- end of auto-generated comment: release notes by coderabbit.ai -->
+
+### Features
+
+* support cjs and esm both by tshy ([#34](https://github.com/eggjs/development/issues/34)) ([7a63cd6](https://github.com/eggjs/development/commit/7a63cd62be6b5ba1c3792bc983b42a1d0da42326))
+
 ## [3.0.2](https://github.com/eggjs/egg-development/compare/v3.0.1...v3.0.2) (2024-12-22)
 
 
