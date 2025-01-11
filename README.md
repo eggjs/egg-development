@@ -23,7 +23,7 @@ This is an egg plugin for local development, under development environment enabl
 
 ## Configuration
 
-see [config/config.default.js](https://github.com/eggjs/egg-development/blob/master/config/config.default.js) for more detail.
+see [config/config.default.ts](https://github.com/eggjs/egg-development/blob/master/src/config/config.default.ts) for more detail.
 
 ## Features
 
@@ -53,12 +53,14 @@ Under the following directory (including subdirectories) will ignore file change
 
 Developer can use `config.reloadPattern`([multimatch](https://github.com/sindresorhus/multimatch)) to control whether to reload.
 
-```js
-// config/config.default.js
-exports.development = {
-  // don't reload when ts fileChanged
-  // https://github.com/sindresorhus/multimatch
-  reloadPattern: ['**', '!**/*.ts'],
+```ts
+// config/config.default.ts
+export default = {
+  development: {
+    // don't reload when css fileChanged
+    // https://github.com/sindresorhus/multimatch
+    reloadPattern: ['**', '!**/*.css'],
+  },
 };
 ```
 
